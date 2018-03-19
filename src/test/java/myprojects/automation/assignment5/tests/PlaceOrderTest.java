@@ -46,7 +46,6 @@ public class PlaceOrderTest extends BaseTest {
         ProductData updSelectedProduct = actions.getOpenedProductInfo();
 
         Assert.assertTrue(selectedProduct.getQty() - updSelectedProduct.getQty() == 1, "SMTH going wrong, must be 1");
-
     }
 
 }
