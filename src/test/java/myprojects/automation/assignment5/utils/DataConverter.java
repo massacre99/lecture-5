@@ -33,15 +33,22 @@ public class DataConverter {
      * @return Parsed float value of the price.
      */
     public static float parsePriceValue(String label) {
-        Matcher priceMatcher = Pattern.compile("^(.*) ₴$").matcher(label);
-        Assert.assertTrue(priceMatcher.find(), String.format("Unable to extract price value (%s)", label));
+//        Matcher priceMatcher = Pattern.compile("^(.*) ₴$").matcher(label);
+//        Assert.assertTrue(priceMatcher.find(), String.format("Unable to extract price value (%s)", label));
+//
+//        try {
+//            DecimalFormatSymbols separators = new DecimalFormatSymbols();
+//            separators.setDecimalSeparator(',');
+//            return new DecimalFormat("#0.00", separators).parse(priceMatcher.group(1)).floatValue();
+//        } catch (ParseException e) {
+//            throw  new RuntimeException(e);
+//        }
 
         try {
-            DecimalFormatSymbols separators = new DecimalFormatSymbols();
-            separators.setDecimalSeparator(',');
-            return new DecimalFormat("#0.00", separators).parse(priceMatcher.group(1)).floatValue();
-        } catch (ParseException e) {
-            throw  new RuntimeException(e);
+            Float f = Float.valueOf(label.replaceAll(",",".").replaceAll("[^\\d.]+|\\.(?!\\d)", ""));
+            return f;
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("SMTH goes wrong");
         }
     }
 

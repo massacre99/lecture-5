@@ -31,7 +31,9 @@ public class PlaceOrderTest extends BaseTest {
 
         ProductData confirmedProduct = actions.confirmOrder();
 
-        Assert.assertTrue(actions.getComfTitle().contains("заказ подтверждён"), "Order not confirmed");
+
+        Assert.assertTrue(actions.getComfTitle().contains("ваш заказ подтверждён"),
+                "Order not confirmed " + actions.getComfTitle() + "not contains 'ваш заказ подтверждён");
         Assert.assertTrue(confirmedProduct.getName().startsWith(selectedProduct.getName()), "Not my product");
 
         Assert.assertEquals(selectedProduct.getPrice(), confirmedProduct.getPrice(), "Prices not equals");

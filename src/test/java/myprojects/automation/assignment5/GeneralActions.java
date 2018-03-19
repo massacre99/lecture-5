@@ -208,7 +208,7 @@ public class GeneralActions {
     }
 
     public String getComfTitle() {
-        return comfTitle;
+        return comfTitle.toLowerCase();
     }
 
     public String getProductURL() {

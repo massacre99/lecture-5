@@ -15,7 +15,7 @@
         <module name="Webinar - Assignment 5" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="Assignment 5" target="1.8" />
     </bytecodeTargetLevel>
   </component>

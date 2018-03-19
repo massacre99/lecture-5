@@ -30,7 +30,7 @@ public abstract class BaseTest {
      */
     @BeforeClass
     @Parameters({"selenium.browser", "selenium.grid"})
-    public void setUp(@Optional("chrome") String browser, @Optional("") String gridUrl) {
+    public void setUp(@Optional("headless-chrome") String browser, @Optional("") String gridUrl) {
         WebDriver tempDriver;
         if (gridUrl.equals("")) {
             tempDriver = DriverFactory.initDriver(browser);
