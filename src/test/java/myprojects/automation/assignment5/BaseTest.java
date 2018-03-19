@@ -1,5 +1,7 @@
 package myprojects.automation.assignment5;
 
+import myprojects.automation.assignment5.utils.DriverFactory;
+import myprojects.automation.assignment5.utils.logging.EventHandler;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -12,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Base script functionality, can be used for all Selenium scripts.
+ * TODO environment : Chrome 64 (driver 2.35), FF 54 (driver 0.17.0), IE 11 (driver 3.3.0.0)
  */
 public abstract class BaseTest {
     protected EventFiringWebDriver driver;
@@ -28,10 +31,16 @@ public abstract class BaseTest {
     @BeforeClass
     @Parameters({"selenium.browser", "selenium.grid"})
     public void setUp(@Optional("chrome") String browser, @Optional("") String gridUrl) {
-        // TODO create WebDriver instance according to passed parameters
-        // driver = new EventFiringWebDriver(....);
-        // driver.register(new EventHandler());
-        // ...
+        WebDriver tempDriver;
+        if (gridUrl.equals("")) {
+            tempDriver = DriverFactory.initDriver(browser);
+        }
+        else {
+            tempDriver = DriverFactory.initDriver(browser,gridUrl);
+        }
+
+        driver = new EventFiringWebDriver(tempDriver);
+        driver.register(new EventHandler());
 
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -65,6 +74,7 @@ public abstract class BaseTest {
             case "firefox":
             case "ie":
             case "internet explorer":
+            case "headless-chrome":
             case "chrome":
             default:
                 return false;

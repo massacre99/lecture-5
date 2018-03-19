@@ -1,5 +1,7 @@
 package myprojects.automation.assignment5.model;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Random;
 
 /**
@@ -25,7 +27,7 @@ public class ProductData {
     }
 
     public float getPrice() {
-        return price;
+    return price;
     }
 
     /**

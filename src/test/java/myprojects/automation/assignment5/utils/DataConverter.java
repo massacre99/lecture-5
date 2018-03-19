@@ -34,7 +34,7 @@ public class DataConverter {
      */
     public static float parsePriceValue(String label) {
         Matcher priceMatcher = Pattern.compile("^(.*) ₴$").matcher(label);
-        Assert.assertTrue(priceMatcher.find(), "Unable to extract price value!");
+        Assert.assertTrue(priceMatcher.find(), String.format("Unable to extract price value (%s)", label));
 
         try {
             DecimalFormatSymbols separators = new DecimalFormatSymbols();

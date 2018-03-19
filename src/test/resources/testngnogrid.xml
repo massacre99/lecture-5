@@ -1,0 +1,35 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Products Management" verbose="1" >
+
+    <test name="Create New Order [Chrome]" >
+        <parameter name="selenium.browser" value="chrome" />
+        <classes>
+            <class name="myprojects.automation.assignment5.tests.PlaceOrderTest" />
+        </classes>
+    </test>
+
+    <test name="Create New Order [IE]" >
+        <parameter name="selenium.browser" value="internet explorer" />
+        <classes>
+            <class name="myprojects.automation.assignment5.tests.PlaceOrderTest" />
+        </classes>
+    </test>
+
+    <test name="Create New Order [Firefox]" >
+        <parameter name="selenium.browser" value="firefox" />
+        <classes>
+            <class name="myprojects.automation.assignment5.tests.PlaceOrderTest" />
+        </classes>
+    </test>
+
+
+    <test name="Create New Order [Android]" >
+        <parameter name="selenium.browser" value="android" />
+        <classes>
+            <class name="myprojects.automation.assignment5.tests.PlaceOrderTest" />
+        </classes>
+    </test>
+
+    <!--Configure tests for other browser types-->
+</suite>
