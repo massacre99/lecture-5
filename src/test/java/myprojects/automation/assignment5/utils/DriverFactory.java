@@ -31,7 +31,6 @@ public class DriverFactory {
                         "webdriver.gecko.driver",
                         new File(DriverFactory.class.getResource("/geckodriver.exe").getFile()).getPath());
                 return new FirefoxDriver(options);
-//            return new FirefoxDriver((FirefoxOptions)options); TODO либо так, если не взлетит
             case "ie":
             case "internet explorer":
                 System.setProperty(
@@ -49,7 +48,7 @@ public class DriverFactory {
         }
     }
 
-    // TODO Если не стартанет, отдельно задать опции для каждого браузера в виде IEOpt = new IEOpt
+
     public static MutableCapabilities getOptions(String browser) {
         MutableCapabilities options;
 
@@ -67,8 +66,6 @@ public class DriverFactory {
                 Map<String, String> mobileEmulation = new HashMap<>();
                 mobileEmulation.put("deviceName", "Galaxy S5");
                 options = new ChromeOptions().setExperimentalOption("mobileEmulation", mobileEmulation);
-//                ChromeOptions opt = (ChromeOptions)options;
-//                opt.setExperimentalOption("mobileEmulation", mobileEmulation);
                 return options;
             case "headless-chrome":
                 options = new ChromeOptions().addArguments("headless")

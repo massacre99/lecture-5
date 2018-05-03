@@ -82,14 +82,10 @@ public class GeneralActions {
     public void openRandomProduct() {
         driver.get(Properties.getBaseUrl());
         waitForContentLoad();
-//        driver.findElement(allProductsLink).click();
         scrollToElement(driver.findElement(allProductsLink)).click();
         List<WebElement> productsElements = driver.findElements(productLinks);
         WebElement product = productsElements.get(new Random().nextInt(productsElements.size()));
         scrollToElement(product).click();
-//        product.click();
-//        wait.until(ExpectedConditions.elementToBeClickable(product))
-//                .click();
     }
 
     /**
@@ -103,9 +99,6 @@ public class GeneralActions {
 
         String name = driver.getTitle();
         float price = DataConverter.parsePriceValue(driver.findElement(productPrice).getText());
-//                Float.parseFloat(
-//                driver.findElement(productPrice)
-//                        .getAttribute("content"));
         int quantity;
         String isStock = driver.findElement(isProductAvailable).getText();
 
@@ -119,10 +112,6 @@ public class GeneralActions {
             scrollToElement(driver.findElement(productDetails)).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(productQuantity));
             quantity = DataConverter.parseStockValue(driver.findElement(productQuantity).getText());
-//            quantity = Integer.parseInt(
-//                    driver.findElement(productQuantity)
-//                            .getText().replaceAll("[\\D]", "").trim());
-
             productURL = driver.getCurrentUrl();
             CustomReporter.logAction("Product name - " + name);
             CustomReporter.logAction(String.format("Product URL - %s", productURL));
